@@ -1,0 +1,38 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create A New Person</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+        <!--<mat-error *ngIf="createForm.controls['name'].errors.required">
+          Title is <strong>required</strong>
+        </mat-error>-->
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Email" formControlName="email" #email email>
+      </mat-form-field>
+      
+      <mat-form-field>
+          <mat-select placeholder="Gender" formControlName="gender" #gender>
+            <mat-option value="male">male</mat-option>
+            <mat-option value="female">female</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Phone" formControlName="phone" #phone />
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addPerson(name.value, email.value,  gender.value, phone.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>
